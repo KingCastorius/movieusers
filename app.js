@@ -2,8 +2,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let app = express();
 let router = express.Router();
-let movies = require('./movies');
-let users = require('./users');
+let pokemon = require('./pokemon');
 
 app.use(bodyParser.json());
 
@@ -11,12 +10,11 @@ app.get('/', (req, res) => {
 	res.end();
 })
 
-app.use('/api/movie', movies);
-app.use('/api/user', users);
+app.use('/api/pokemon', pokemon);
 
 
 app.listen(3000, () => {
-	console.log('HOW DO YOU OWN DISORDERRRRR?!?! DISORDERRR!');
+	console.log('Server connected');
 })
 
 module.exports = router;
