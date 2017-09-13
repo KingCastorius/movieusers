@@ -2,12 +2,27 @@ let express = require('express');
 let router = express.Router();
 
 let pokemon = [
-{name: 'charmander', type: 'fire', id: '1'},
-{name: 'pikachu', type: 'electric', id: '2'}
+	{name: 'charmander', type: 'fire', id: '1'},
+	{name: 'pikachu', type: 'electric', id: '2'}
 ]
+
+let matches = [];
 
 router.get('/', (req, res) => {
 	res.send(pokemon);
+})
+
+router.get('/:type', (req, res) => {
+
+	for(let i = 0; i < pokemon.length; i++) {
+		if(pokemon[i].type === req.params['type']) {
+			matches.push(pokemon[i]);
+		} else {
+			continue;
+		}
+	}
+
+	res.send(matches)
 })
 
 router.post('/', (req, res) => {
